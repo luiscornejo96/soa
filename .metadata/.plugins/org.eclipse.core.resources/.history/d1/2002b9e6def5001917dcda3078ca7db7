@@ -1,0 +1,77 @@
+/**
+ * PresupuestoServiceSkeleton.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis2 version: 1.7.9  Built on : Nov 16, 2018 (12:05:37 GMT)
+ */
+package com.soa;
+
+import java.rmi.RemoteException;
+
+import com.amortizacion.GenerarTablaServiceStub;
+import com.amortizacion.GenerarTablaServiceStub.Amortizacion_type0;
+import com.amortizacion.GenerarTablaServiceStub.TablaAmortizacionRequest;
+import com.amortizacion.GenerarTablaServiceStub.TablaAmortizacionResponse;
+import com.buro.BuroServiceStub;
+import com.buro.BuroServiceStub.ConsultarBuroRequest;
+import com.buro.BuroServiceStub.ConsultarBuroResponse;
+
+/**
+ *  PresupuestoServiceSkeleton java skeleton for the axisService
+ */
+public class PresupuestoServiceSkeleton {
+    /**
+     * Auto generated method signature
+     *
+     * @param presupuestoRequest
+     * @return presupuestoResponse
+     */
+    public com.soa.PresupuestoResponse presupuestoOperation(
+        com.soa.PresupuestoRequest presupuestoRequest) {
+    	PresupuestoResponse response = new PresupuestoResponse();
+    	int folio = presupuestoRequest.getFolio();
+    	boolean aceptado = wasAccept( folio);
+    	System.out.println( "Su estatus de su credito fue: " +  aceptado);
+    	if( aceptado)
+    	{
+    		Amortizacion_type0[] amortzaciones = getAmortizaciones( folio);
+    		if( amortzaciones != null);
+    			//response.setAmortizacionTable( amortzaciones);
+    	}
+    	return response;
+    }
+    private boolean wasAccept( int folio) {
+    	try 
+    	{
+    		BuroServiceStub buroStub = new BuroServiceStub("http://localhost:8080/axis2/services/buroService");
+        	ConsultarBuroRequest requestBuro = new ConsultarBuroRequest();
+        	requestBuro.setId_folio( folio);
+			ConsultarBuroResponse responseBuro = buroStub.buroOperation( requestBuro);
+			System.out.println( "Peticion buro hecha con exito");
+			return  responseBuro.getAprobado();
+		} 
+    	catch (RemoteException e) 
+    	{
+			e.printStackTrace();
+			System.out.println( "Hubo un error en la peticion de buro");
+			return false;
+		}
+    }
+    private Amortizacion_type0[] getAmortizaciones( int folio) {
+    	try
+    	{
+    		GenerarTablaServiceStub amortizacionStub = new GenerarTablaServiceStub("http://localhost:8080/axis2/services/generarTablaService");
+    		TablaAmortizacionRequest requestAmor = new TablaAmortizacionRequest();
+    		requestAmor.setNo_solicitud( folio);
+    		TablaAmortizacionResponse responseAmor = amortizacionStub.generarTablaOperation( requestAmor);
+			System.out.println( "Peticion de amortizacion hecha con exito");
+    		return responseAmor.getAmortizacionTable().getAmortizacion();	
+    	}
+    	catch(RemoteException e)
+    	{
+    		e.printStackTrace();
+			System.out.println( "Hubo un error en la peticion de amortizacion");
+			return null;
+    	}
+    }
+}

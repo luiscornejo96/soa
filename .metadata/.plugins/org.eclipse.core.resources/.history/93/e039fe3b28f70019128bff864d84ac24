@@ -1,0 +1,91 @@
+package clases;
+
+public class Amortizacion {
+	
+	private int id;
+	private int id_solicitud;
+	private int plazo;
+	private int periodo;
+	private double monto;
+	private double interes;
+	private double porcentaje_interes;
+	private double iva;
+	private double mensualidad;
+	private double capital_pendiente;
+	
+	public Amortizacion(int id, int id_solicitud, int plazo, int periodo, double monto, double interes,
+			double porcentaje_interes, double iva, double mensualidad, double capital_pendiente) {
+		this.id = id;
+		this.id_solicitud = id_solicitud;
+		this.plazo = plazo;
+		this.periodo = periodo;
+		this.monto = monto;
+		this.interes = interes;
+		this.porcentaje_interes = porcentaje_interes;
+		this.iva = iva;
+		this.mensualidad = mensualidad;
+		this.capital_pendiente = capital_pendiente;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getId_solicitud() {
+		return id_solicitud;
+	}
+	public void setId_solicitud(int id_solicitud) {
+		this.id_solicitud = id_solicitud;
+	}
+	public int getPlazo() {
+		return plazo;
+	}
+	public void setPlazo(int plazo) {
+		this.plazo = plazo;
+	}
+	public int getPeriodo() {
+		return periodo;
+	}
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
+	}
+	public double getMonto() {
+		return monto;
+	}
+	public void setMonto(double monto) {
+		this.monto = monto;
+	}
+	public double getInteres() {
+		return interes;
+	}
+	public void setInteres(double interes) {
+		this.interes = interes;
+	}
+	public double getPorcentaje_interes() {
+		return porcentaje_interes;
+	}
+	public void setPorcentaje_interes(double porcentaje_interes) {
+		this.porcentaje_interes = porcentaje_interes;
+	}
+	public double getIva() {
+		return iva;
+	}
+	public void setIva(double iva) {
+		this.iva = iva;
+	}
+	public double getMensualidad() {
+		return mensualidad;
+	}
+	public void setMensualidad(double mensualidad) {
+		this.mensualidad = mensualidad;
+	}
+	public double getCapital_pendiente() {
+		return capital_pendiente;
+	}
+	public void setCapital_pendiente(double capital_pendiente) {
+		this.capital_pendiente = capital_pendiente;
+	}	
+	
+	
+}

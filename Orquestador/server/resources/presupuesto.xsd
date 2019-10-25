@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://soa.com" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://soa.com">
+    <xs:element name="presupuestoRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="folio" type="xs:int"/>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="apellido" type="xs:string"/>
+                <xs:element name="domicilio" type="xs:string"/>
+                <xs:element name="monto" type="xs:double"/>
+                <xs:element name="interes" type="xs:double"/>
+                <xs:element name="plazo" type="xs:int"/>
+                <xs:element name="noTarjeta" type="xs:string"/>
+                <xs:element name="pagado" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="presupuestoResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element minOccurs="0" name="amortizacionTable">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element maxOccurs="unbounded" name="amortizacion">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="id_solicitud" type="xs:int"/>
+                                        <xs:element name="periodo" type="xs:int"/>
+                                        <xs:element name="plazo" type="xs:int"/>
+                                        <xs:element name="monto" type="xs:double"/>
+                                        <xs:element name="interes" type="xs:double"/>
+                                        <xs:element name="porcentaje_interes" type="xs:double"/>
+                                        <xs:element name="iva" type="xs:double"/>
+                                        <xs:element name="mensualidad" type="xs:double"/>
+                                        <xs:element name="capital_pendiente" type="xs:double"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

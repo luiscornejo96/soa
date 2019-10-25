@@ -1,0 +1,77 @@
+
+
+public class Amortizacion {
+	
+	private int id;
+	private int id_solicitud;
+	private int periodo;
+	private int plazo;
+	private float interes;
+	private float pago;
+	private float capital_pendiente;
+	
+	
+	public Amortizacion(int id, int id_solicitud, int periodo, int plazo, float interes, float pago,
+			float capital_pendiente) {
+		this.id = id;
+		this.id_solicitud = id_solicitud;
+		this.periodo = periodo;
+		this.plazo = plazo;
+		this.interes = interes;
+		this.pago = pago;
+		this.capital_pendiente = capital_pendiente;
+	}
+
+	public int getId_solicitud() {
+		return id_solicitud;
+	}
+
+	public void setId_solicitud(int id_solicitud) {
+		this.id_solicitud = id_solicitud;
+	}
+
+	
+	public int getPlazo() {
+		return plazo;
+	}
+
+	public void setPlazo(int plazo) {
+		this.plazo = plazo;
+	}
+
+	public float getInteres() {
+		return interes;
+	}
+
+	public void setInteres(float interes) {
+		this.interes = interes;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getPeriodo() {
+		return periodo;
+	}
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
+	}
+	public float getPago() {
+		return pago;
+	}
+	public void setPago(float pago) {
+		this.pago = pago;
+	}
+	public float getCapital_pendiente() {
+		return capital_pendiente;
+	}
+	public void setCapital_pendiente(float capital_pendiente) {
+		this.capital_pendiente = capital_pendiente;
+	}
+	
+	
+	
+
+}

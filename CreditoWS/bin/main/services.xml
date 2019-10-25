@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.7.9  Built on : Nov 16, 2018 (12:05:37 GMT) -->
+<serviceGroup>
+    <service name="generarTablaService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.soa.GenerarTablaServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.soa.GenerarTablaServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="generarTablaOperation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://soa.com">
+            <actionMapping>http://soa.com/generarTablaOperation</actionMapping>
+            <outputActionMapping>http://soa.com/generarTablaPortType/generarTablaOperationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

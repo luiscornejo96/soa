@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.7.9  Built on : Nov 16, 2018 (12:05:37 GMT) -->
+<serviceGroup>
+    <service name="CalcularService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.nombre.CalcularServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.nombre.CalcularServiceImpl</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="CalcularOperation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://nombre.com">
+            <actionMapping>http://nombre.com/nombre</actionMapping>
+            <outputActionMapping>http://nombre.com/CalcularPortType/CalcularOperationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

@@ -1,0 +1,19 @@
+package clases;
+
+public class Amortizacion {
+	
+	private int id;
+	private int id_solicitud;
+	private int plazo;
+	private int periodo;
+	private float monto;
+	private float interes;
+	private float porcentaje_interes;
+	private float iva;
+	private float mensualidad;
+	private float capital_pendiente;
+	
+
+	
+	
+}

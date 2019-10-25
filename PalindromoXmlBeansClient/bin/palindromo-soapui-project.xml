@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="10cee79f-5128-41c3-a756-b2c08b38f1fc" activeEnvironment="Default" name="palindromo" resourceRoot="${projectDir}" soapui-version="5.5.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="95053a35-e017-4cb0-b6c9-9378bdb46488" wsaVersion="NONE" name="validarPalindromoBinding" type="wsdl" bindingName="{http://palindromo.com}validarPalindromoBinding" soapVersion="1_1" anonymous="optional" definition="palindromo.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\luisc\OneDrive\Escritorio\Luis\Escuela\SOA\Java\PalindromoXmlBeans\src\main\resources\palindromo.wsdl"><con:part><con:url>file:\C:\Users\luisc\OneDrive\Escritorio\Luis\Escuela\SOA\Java\PalindromoXmlBeans\src\main\resources\palindromo.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://palindromo.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://palindromo.com">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://palindromo.com" elementFormDefault="qualified">
+      <xs:include schemaLocation="palindromo.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="validarPalindromoMessageRequest">
+    <wsdl:part name="parameter" element="tns:request"/>
+  </wsdl:message>
+  <wsdl:message name="validarPalindromoMessageResponse">
+    <wsdl:part name="parameter" element="tns:response"/>
+  </wsdl:message>
+  <wsdl:portType name="validarPalindromoPortType">
+    <wsdl:operation name="validarPalindromoOperation">
+      <wsdl:input message="tns:validarPalindromoMessageRequest"/>
+      <wsdl:output message="tns:validarPalindromoMessageResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="validarPalindromoBinding" type="tns:validarPalindromoPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validarPalindromoOperation">
+      <soap:operation soapAction="http://palindromo.com/palindromo"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="validarPalindromo">
+    <wsdl:port name="validarPalindromoPort" binding="tns:validarPalindromoBinding">
+      <soap:address location="http://localhost:8088/axis2/services/validarPalindromo"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\luisc\OneDrive\Escritorio\Luis\Escuela\SOA\Java\PalindromoXmlBeans\src\main\resources\palindromo.xsd</con:url><con:content><![CDATA[<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="http://palindromo.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="request">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="palabra" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="response">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="esPalindromo" type="xs:boolean"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://Acer-de-Luis:8088/mockvalidarPalindromoBinding</con:endpoint><con:endpoint>http://localhost:8080/axis2/services/validarPalindromo?wsdl</con:endpoint><con:endpoint>http://localhost:8088/axis2/services/validarPalindromo</con:endpoint></con:endpoints><con:operation id="b18c3631-415f-47ae-be1d-547c63447889" isOneWay="false" action="http://palindromo.com/palindromo" name="validarPalindromoOperation" bindingOperationName="validarPalindromoOperation" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a0fc74da-d189-4a13-bdfb-8504796f3e41" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/axis2/services/validarPalindromo?wsdl</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:pal="http://palindromo.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <pal:request>\r
+         <pal:palabra>true</pal:palabra>\r
+      </pal:request>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://palindromo.com/palindromo"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

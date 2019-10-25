@@ -1,0 +1,20 @@
+package dao;
+
+import clases.Amortizacion;
+
+public class AmortizacionDao {
+	
+	protected JdbcTemplate jdbcTemplate;
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	public void add( Amortizacion amortizacion)
+	{
+		jdbcTemplate.execute( "INSERT INTO Amortizacion( id_solicitud, periodo, pago, capital_pendiente) "
+				+ "VALUES( '" + amortizacion)
+	}
+	
+	
+
+}

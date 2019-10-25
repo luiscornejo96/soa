@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns:ns1="http://soa.com" 
+targetNamespace="http://soa.com" 
+elementFormDefault="qualified" 
+attributeFormDefault="unqualified">
+	<xs:element name="tablaAmortizacionRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="no_solicitud" type="xs:int"/>
+				<xs:element name="plazo" type="xs:double"/>
+				<xs:element name="capital" type="xs:double"/>
+				<xs:element name="interes" type="xs:double"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tablaAmortizacionResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="amortizacionTable" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="amortizacion" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="id_solicitud" type="xs:int"/>
+										<xs:element name="periodo" type="xs:int"/>
+										<xs:element name="plazo" type="xs:int"/>
+										<xs:element name="monto" type="xs:double"/>
+										<xs:element name="interes" type="xs:double"/>
+										<xs:element name="porcentaje_interes" type="xs:double"/>
+										<xs:element name="iva" type="xs:double"/>
+										<xs:element name="mensualidad" type="xs:double"/>
+										<xs:element name="capital_pendiente" type="xs:double"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

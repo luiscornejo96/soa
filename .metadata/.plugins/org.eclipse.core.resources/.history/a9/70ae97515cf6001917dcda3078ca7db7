@@ -1,0 +1,156 @@
+/**
+ * PresupuestoServiceSkeleton.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis2 version: 1.7.9  Built on : Nov 16, 2018 (12:05:37 GMT)
+ */
+package com.soa;
+
+import java.rmi.RemoteException;
+import java.util.List;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
+
+import com.amortizacion.GenerarTablaServiceStub;
+import com.amortizacion.GenerarTablaServiceStub.Amortizacion_type0;
+import com.amortizacion.GenerarTablaServiceStub.TablaAmortizacionRequest;
+import com.amortizacion.GenerarTablaServiceStub.TablaAmortizacionResponse;
+import com.buro.BuroServiceStub;
+import com.buro.BuroServiceStub.ConsultarBuroRequest;
+import com.buro.BuroServiceStub.ConsultarBuroResponse;
+
+import dao.AmortizacionDao;
+
+/**
+ *  PresupuestoServiceSkeleton java skeleton for the axisService
+ */
+public class PresupuestoServiceSkeleton {
+    /**
+     * Auto generated method signature
+     *
+     * @param presupuestoRequest
+     * @return presupuestoResponse
+     */
+    public com.soa.PresupuestoResponse presupuestoOperation(
+        com.soa.PresupuestoRequest presupuestoRequest) {
+    	PresupuestoResponse response = new PresupuestoResponse();
+    	int folio = presupuestoRequest.getFolio();
+    	boolean aceptado = wasAccept( folio);
+    	System.out.println( "Su estatus de su credito fue: " +  aceptado);
+    	if( aceptado)
+    	{
+    		Amortizacion_type0[] amortzaciones = getAmortizaciones( folio);
+    		System.out.println("Longitud de amortisaciones: " + amortzaciones.length);
+    		if( amortzaciones != null);
+    		{
+    			ApplicationContext context = null; // Context for creating beans.
+    			DataSourceTransactionManager txManagerJDBC = null;
+    			DefaultTransactionDefinition def = null;
+    			TransactionStatus status = null;
+    			System.out.println(" Antes de cargar el context");
+    			context = new ClassPathXmlApplicationContext("./context.xml");
+    			txManagerJDBC = (DataSourceTransactionManager) context.getBean("transactionManager");
+    			try 
+    			{
+    				def = new DefaultTransactionDefinition();
+    				def.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+    				status = txManagerJDBC.getTransaction(def);
+    			} 
+    			catch (Exception e) 
+    			{
+    				System.out.println("Error en definición de transacción: " + e.getMessage());
+    				return response;
+    			}
+    			System.out.println("despues de cargar context");
+    			AmortizacionDao amortizacionDao = (AmortizacionDao) context.getBean( "amortizacionDao");
+
+    			System.out.println("Antes de insertar amortizaciones");
+    			try 
+    			{
+    				for( int i = 0; i < amortzaciones.length; i++)
+        			{
+        				amortizacionDao.add( amortzaciones[i]);
+        			}
+    			} 
+    			catch (Exception e) 
+    			{
+    				System.out.println("Error en transacción: " + e.getMessage());
+    				txManagerJDBC.rollback(status);
+    				return response;
+    			}
+
+    			System.out.println("despues de insertar amortizaciones");
+    			txManagerJDBC.commit( status);
+    			//Mandar las amortizaciones al xml//
+    			List<com.soa.Amortizacion_type0> auxAmoriti;
+    			try 
+    			{
+    				auxAmoriti = amortizacionDao.getAmortizacionBySolicitud( amortzaciones[0]);
+    			} 
+    			catch (Exception e) 
+    			{
+    				System.out.println("Error en transacción: " + e.getMessage());
+    				txManagerJDBC.rollback(status);
+    				return response;
+    			}
+    			txManagerJDBC.commit( status);
+
+    			System.out.println("despues de obtener amortizaciones DB");
+    			AmortizacionTable_type0 tabla = new AmortizacionTable_type0();
+    			//cambiar list por array
+    			com.soa.Amortizacion_type0 amortization[] = new com.soa.Amortizacion_type0[ auxAmoriti.size()];
+    			for( int i = 0; i < auxAmoriti.size(); i++)
+    			{
+    				amortization[i] = auxAmoriti.get( i);
+    			}
+    			tabla.setAmortizacion( amortization);
+
+    			System.out.println("antes de mandar tabla a respuesta");
+    			response.setAmortizacionTable( tabla);
+    			
+    			
+    		}
+    			//response.setAmortizacionTable( amortzaciones);
+    	}
+    	return response;
+    }
+    private boolean wasAccept( int folio) {
+    	try 
+    	{
+    		BuroServiceStub buroStub = new BuroServiceStub("http://localhost:8080/axis2/services/buroService");
+        	ConsultarBuroRequest requestBuro = new ConsultarBuroRequest();
+        	requestBuro.setId_folio( folio);
+			ConsultarBuroResponse responseBuro = buroStub.buroOperation( requestBuro);
+			System.out.println( "Peticion buro hecha con exito");
+			return  responseBuro.getAprobado();
+		} 
+    	catch (RemoteException e) 
+    	{
+			e.printStackTrace();
+			System.out.println( "Hubo un error en la peticion de buro");
+			return false;
+		}
+    }
+    private Amortizacion_type0[] getAmortizaciones( int folio) {
+    	try
+    	{
+    		GenerarTablaServiceStub amortizacionStub = new GenerarTablaServiceStub("http://localhost:8080/axis2/services/generarTablaService");
+    		TablaAmortizacionRequest requestAmor = new TablaAmortizacionRequest();
+    		requestAmor.setNo_solicitud( folio);
+    		TablaAmortizacionResponse responseAmor = amortizacionStub.generarTablaOperation( requestAmor);
+			System.out.println( "Peticion de amortizacion hecha con exito");
+    		return responseAmor.getAmortizacionTable().getAmortizacion();	
+    	}
+    	catch(RemoteException e)
+    	{
+    		e.printStackTrace();
+			System.out.println( "Hubo un error en la peticion de amortizacion");
+			return null;
+    	}
+    }
+}

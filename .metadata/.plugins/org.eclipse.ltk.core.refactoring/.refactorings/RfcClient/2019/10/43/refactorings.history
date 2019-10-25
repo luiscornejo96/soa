@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 elements to &apos;Amortizacion&apos;&#x0D;&#x0A;- Original project: &apos;RfcClient&apos;&#x0D;&#x0A;- Destination element: &apos;Amortizacion&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     build-xmlbeans.properties&#x0D;&#x0A;     build.gradle&#x0D;&#x0A;     build-xmlbeans.xml" description="Copy files" element1="build-xmlbeans.properties" element2="build.gradle" element3="build-xmlbeans.xml" files="3" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1571763646551" target="/Amortizacion" units="0" version="1.0"/>
+</session>

@@ -1,0 +1,39 @@
+package dao;
+
+import java.util.List;
+
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.amortizacion.GenerarTablaServiceStub.Amortizacion_type0;
+
+import clases.Amortizacion;
+
+public class AmortizacionDao {
+	
+	protected JdbcTemplate jdbcTemplate;
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	public void add( Amortizacion_type0 amortizacion)
+	{
+		jdbcTemplate.execute( "INSERT INTO Amortizacion( id_solicitud, plazo, periodo, monto, interes, porcentaje_interes, "
+				+ "iva, mensualidad, capital_pendiente) "
+				+ "VALUES( " + amortizacion.getId_solicitud() + "," + amortizacion.getPlazo() + "," + amortizacion.getPeriodo() + "," 
+				+ amortizacion.getMonto() + "," + amortizacion.getInteres() + "," + amortizacion.getPorcentaje_interes() + ","
+				+ amortizacion.getIva() + "," + amortizacion.getMensualidad() + "," + amortizacion.getCapital_pendiente() +  ")");
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Amortizacion_type0> getAmortizacionBySolicitud( Amortizacion amortizacion){
+		
+		List<Amortizacion_type0> list = jdbcTemplate.query( "SELECT * FROM Amortizacion WHERE id_solicitud = " +  amortizacion.getId_solicitud()
+		, new BeanPropertyRowMapper( Amortizacion.class));
+		
+		return list;
+	}
+	
+	
+
+}

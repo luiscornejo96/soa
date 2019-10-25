@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://soa.com" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://soa.com">
+    <xs:element name="consultarBuroRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="id_folio" type="xs:int"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="consultarBuroResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="aprobado" type="xs:boolean"/>
+                <xs:element name="tasa" type="xs:double"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

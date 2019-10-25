@@ -1,0 +1,94 @@
+package clases;
+
+public class Amortizacion {
+	
+	private int id;
+	private int id_solicitud;
+	private int plazo;
+	private int periodo;
+	private float monto;
+	private float interes;
+	private float porcentaje_interes;
+	private float iva;
+	private float mensualidad;
+	private float capital_pendiente;	
+	
+	public Amortizacion(int id, int id_solicitud, int plazo, int periodo, float monto, float interes,
+			float porcentaje_interes, float iva, float mensualidad, float capital_pendiente) {
+		this.id = id;
+		this.id_solicitud = id_solicitud;
+		this.plazo = plazo;
+		this.periodo = periodo;
+		this.monto = monto;
+		this.interes = interes;
+		this.porcentaje_interes = porcentaje_interes;
+		this.iva = iva;
+		this.mensualidad = mensualidad;
+		this.capital_pendiente = capital_pendiente;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getId_solicitud() {
+		return id_solicitud;
+	}
+	public void setId_solicitud(int id_solicitud) {
+		this.id_solicitud = id_solicitud;
+	}
+	public int getPlazo() {
+		return plazo;
+	}
+	public void setPlazo(int plazo) {
+		this.plazo = plazo;
+	}
+	public int getPeriodo() {
+		return periodo;
+	}
+	public void setPeriodo(int periodo) {
+		this.periodo = periodo;
+	}
+	public float getMonto() {
+		return monto;
+	}
+	public void setMonto(float monto) {
+		this.monto = monto;
+	}
+	public float getInteres() {
+		return interes;
+	}
+	public void setInteres(float interes) {
+		this.interes = interes;
+	}
+	public float getPorcentaje_interes() {
+		return porcentaje_interes;
+	}
+	public void setPorcentaje_interes(float porcentaje_interes) {
+		this.porcentaje_interes = porcentaje_interes;
+	}
+	public float getIva() {
+		return iva;
+	}
+	public void setIva(float iva) {
+		this.iva = iva;
+	}
+	public float getMensualidad() {
+		return mensualidad;
+	}
+	public void setMensualidad(float mensualidad) {
+		this.mensualidad = mensualidad;
+	}
+	public float getCapital_pendiente() {
+		return capital_pendiente;
+	}
+	public void setCapital_pendiente(float capital_pendiente) {
+		this.capital_pendiente = capital_pendiente;
+	}
+	
+
+	
+	
+}

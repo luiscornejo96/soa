@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://soa.com" targetNamespace="http://soa.com">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://soa.com" elementFormDefault="qualified">
+			<xs:include schemaLocation="presupuesto.xsd"></xs:include>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="presupuestoMessageRequest">
+		<wsdl:part name="parameter" element="tns:presupuestoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="presupuestoMessageResponse">
+		<wsdl:part name="parameter" element="tns:presupuestoResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="presupuestoPortType">
+		<wsdl:operation name="presupuestoOperation">
+			<wsdl:input message="tns:presupuestoMessageRequest"/>
+			<wsdl:output message="tns:presupuestoMessageResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="presupuestoBinding" type="tns:presupuestoPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="presupuestoOperation">
+			<soap:operation soapAction="http://soa.com/consultarPresupuesto"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="presupuestoService">
+		<wsdl:port name="presupuestoPort" binding="tns:presupuestoBinding">
+			<soap:address location="No Target Adress"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,77 @@
+
+
+public class Prestamo {
+
+	private int id;
+	private String nombre;
+	private String apellido;
+	private String domicilio;
+	private float monto;
+	private float interes;
+	private int plazo;
+	private boolean pagado;
+	
+
+	public Prestamo(int id, String nombre, String apellido, String domicilio, float monto, float interes, int plazo, boolean pagado) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.domicilio = domicilio;
+		this.monto = monto;
+		this.interes = interes;
+		this.plazo = plazo;
+		this.pagado = pagado;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public String getDomicilio() {
+		return domicilio;
+	}
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
+	public float getMonto() {
+		return monto;
+	}
+	public void setMonto(float monto) {
+		this.monto = monto;
+	}
+	public float getInteres() {
+		return interes;
+	}
+	public void setInteres(float interes) {
+		this.interes = interes;
+	}
+	public int getPlazo() {
+		return plazo;
+	}
+	public void setPlazo(int plazo) {
+		this.plazo = plazo;
+	}
+
+	public boolean isPagado() {
+		return pagado;
+	}
+
+	public void setPagado(boolean pagado) {
+		this.pagado = pagado;
+	}
+	
+}

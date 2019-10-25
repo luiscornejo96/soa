@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://rfc.com" targetNamespace="http://rfc.com">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://rfc.com" elementFormDefault="qualified">
+			<xs:include schemaLocation="rfc.xsd"/>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="CalcularMessageRequest">
+		<wsdl:part name="parameter" element="tns:requestLuisCorejo"/>
+	</wsdl:message>
+	<wsdl:message name="CalcularMessageResponse">
+		<wsdl:part name="parameter" element="tns:responseLuisCornejo"/>
+	</wsdl:message>
+	<wsdl:portType name="CalcularPortType">
+		<wsdl:operation name="CalcularOperation">
+			<wsdl:input message="tns:CalcularMessageRequest"/>
+			<wsdl:output message="tns:CalcularMessageResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="CalcularBinding" type="tns:CalcularPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="CalcularOperation">
+			<soap:operation soapAction="http://rfc.com/rfc"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="CalcularRfcService">
+		<wsdl:port name="CalcularPort" binding="tns:CalcularBinding">
+			<soap:address location="http://localhost:8080/axis2/services/CalcularRfcService"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

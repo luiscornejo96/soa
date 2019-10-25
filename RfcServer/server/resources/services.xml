@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.7.9  Built on : Nov 16, 2018 (12:05:37 GMT) -->
+<serviceGroup>
+    <service name="CalcularRfcService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.rfc.CalcularRfcServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceClass">com.rfc.CalcularRfcServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="CalcularOperation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://rfc.com">
+            <actionMapping>http://rfc.com/rfc</actionMapping>
+            <outputActionMapping>http://rfc.com/CalcularPortType/CalcularOperationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

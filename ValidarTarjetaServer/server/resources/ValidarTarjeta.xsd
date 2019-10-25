@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://itq.edu/soa" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://itq.edu/soa">
+    <xs:element name="RequestValidarTarjeta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Tarjeta" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="ResponseValidarTarjeta">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Validacion" type="xs:boolean"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

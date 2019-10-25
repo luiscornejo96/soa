@@ -1,0 +1,26 @@
+package dao;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import clases.Prestamo;
+
+public class PrestamoDao {
+	
+	protected JdbcTemplate jdbcTemplate;
+
+	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+	
+	public void add( Prestamo prestamo) {
+		jdbcTemplate.execute( "INSERT INTO Prestamo( nombre, apellido, domicilio, monto, interes, plazo, aceptado, pagado)"
+				+ " VALUES('" + prestamo.getNombre() + "','" + prestamo.getApellido() + "','" + prestamo.getDomicilio() + "'," + prestamo.getMonto()
+				+ "," + prestamo.getInteres() + "," + prestamo.getPlazo() + "," + prestamo.isAceptado() + "," +  prestamo.isPagado() + ")");
+	}
+	public void updateByAceptado( Prestamo prestamo) {
+		jdbcTemplate.execute( "UPDATE Prestamo set aceptado = " + prestamo.isAceptado() + " WHERE id = " + prestamo.getId());
+	}
+	public void updateByPagado( Prestamo prestamo) {
+		jdbcTemplate.execute( "UPDATE Prestamo set pagado = " + prestamo.isPagado() + " WHERE id = " + prestamo.getId());
+	}
+}

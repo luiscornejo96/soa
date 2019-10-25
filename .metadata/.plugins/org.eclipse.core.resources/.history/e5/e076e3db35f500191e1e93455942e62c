@@ -1,0 +1,46 @@
+/**
+ * GenerarTablaServiceSkeleton.java
+ *
+ * This file was auto-generated from WSDL
+ * by the Apache Axis2 version: 1.7.9  Built on : Nov 16, 2018 (12:05:37 GMT)
+ */
+package com.soa;
+
+/**
+ *  GenerarTablaServiceSkeleton java skeleton for the axisService
+ */
+public class GenerarTablaServiceSkeleton {
+    /**
+     * Auto generated method signature
+     *
+     * @param tablaAmortizacionRequest
+     * @return tablaAmortizacionResponse
+     */
+    public com.soa.TablaAmortizacionResponse generarTablaOperation(
+        com.soa.TablaAmortizacionRequest tablaAmortizacionRequest) {
+    	
+    	TablaAmortizacionResponse response = new TablaAmortizacionResponse();
+    	AmortizacionTable_type0 tabla = new AmortizacionTable_type0();
+    	tabla.setAmortizacion( calcularAmortizacion());
+    	response.setAmortizacionTable( tabla);
+    	return response;
+    }
+    private Amortizacion_type0[] calcularAmortizacion() {
+    	
+    	Amortizacion_type0[] amortizaciones = new Amortizacion_type0[4];
+    	for (Amortizacion_type0 aux : amortizaciones) {
+			aux = new Amortizacion_type0();
+			aux.setId_solicitud( 1001);
+			aux.setPeriodo( 0);
+			aux.setPlazo( 12);
+			aux.setMonto( 25500.00);
+			aux.setInteres( 2550.00);
+			aux.setPorcentaje_interes( .20);
+			aux.setIva( 250.5);
+			aux.setMensualidad( 3500);
+			aux.setCapital_pendiente( aux.getMonto() -  aux.getMensualidad());
+			System.out.println( aux.getId_solicitud());
+		}
+    	return amortizaciones;
+    }
+}

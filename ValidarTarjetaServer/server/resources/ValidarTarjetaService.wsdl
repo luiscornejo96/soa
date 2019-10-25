@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://itq.edu/soa" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://itq.edu/soa" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://itq.edu/soa">
+			<xs:include schemaLocation="ValidarTarjeta.xsd"/>
+		</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidarTarjetaMessageResponse">
+    <wsdl:part name="parameter" element="tns:ResponseValidarTarjeta">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ValidarTarjetaMessageRequest">
+    <wsdl:part name="parameter" element="tns:RequestValidarTarjeta">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ValidarTarjetaPortType">
+    <wsdl:operation name="ValidarTarjetaOperation">
+      <wsdl:input message="tns:ValidarTarjetaMessageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:ValidarTarjetaMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ValidarTarjetaBinding" type="tns:ValidarTarjetaPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ValidarTarjetaOperation">
+      <soap:operation soapAction="ValidarTarjeta"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ValidarTarjetaService">
+    <wsdl:port name="ValidarTarjetaPort" binding="tns:ValidarTarjetaBinding">
+      <soap:address location="http://localhost:8088/axis2/services/ValidarTarjeta"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

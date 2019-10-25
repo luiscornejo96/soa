@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file was auto-generated from WSDL -->
+<!-- by the Apache Axis2 version: 1.7.9  Built on : Nov 16, 2018 (12:05:37 GMT) -->
+<serviceGroup>
+	<service name="springInit" class="com.soa.SpringInit">
+    	<description>Este servicio inicializa el contexto de Spring</description>
+    	<parameter name="serviceTCCL">composite</parameter>
+        <parameter name="ServiceClass">com.soa.SpringInit</parameter>
+        <parameter name="load-on-startup">true</parameter>
+        <operation name="springInit">
+        	<messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver"/> 
+        </operation>
+    </service>
+    <service name="presupuestoService">
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out" class="com.soa.PresupuestoServiceMessageReceiverInOut"/>
+        </messageReceivers>
+        <parameter name="ServiceObjectSupplier">
+    	org.apache.axis2.extensions.spring.receivers.SpringAppContextAwareObjectSupplier</parameter>
+        <parameter name="SpringBeanName">presupuestoServiceSkeleton</parameter>
+		<parameter name="SpringContextLocation">applicationContext.xml</parameter>
+        <parameter name="ServiceClass">com.soa.PresupuestoServiceSkeleton</parameter>
+        <parameter name="useOriginalwsdl">true</parameter>
+        <parameter name="modifyUserWSDLPortAddress">true</parameter>
+        <operation name="presupuestoOperation" mep="http://www.w3.org/ns/wsdl/in-out" namespace="http://soa.com">
+            <actionMapping>http://soa.com/consultarPresupuesto</actionMapping>
+            <outputActionMapping>http://soa.com/presupuestoPortType/presupuestoOperationResponse</outputActionMapping>
+        </operation>
+    </service>
+</serviceGroup>

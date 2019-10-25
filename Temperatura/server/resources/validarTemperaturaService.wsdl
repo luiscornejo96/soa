@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://temperatura.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://temperatura.com" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://temperatura.com">
+			<xs:include schemaLocation="temperatura.xsd"/>
+		</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="validarTemperaturaMessageRequest">
+    <wsdl:part name="parameter" element="tns:requestCelsius">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="validarTemperaturaMessageResponse">
+    <wsdl:part name="parameter" element="tns:responseFarenheit">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="validarTemperaturaPortType">
+    <wsdl:operation name="validarTemperaturaOperation">
+      <wsdl:input message="tns:validarTemperaturaMessageRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:validarTemperaturaMessageResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="validarTemperaturaBinding" type="tns:validarTemperaturaPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="validarTemperaturaOperation">
+      <soap:operation soapAction="http://temperatura.com/temperatura"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="validarTemperaturaService">
+    <wsdl:port name="validarTemperaturaPort" binding="tns:validarTemperaturaBinding">
+      <soap:address location="http://localhost:8080/axis2/services/validarTemperaturaService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

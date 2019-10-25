@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://rfc.com" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://rfc.com">
+    <xs:element name="requestLuisCorejo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="nombre" type="xs:string"/>
+                <xs:element name="apellidoPaterno" type="xs:string"/>
+                <xs:element name="apellidoMaterno" type="xs:string"/>
+                <xs:element name="fechaNacimiento" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="responseLuisCornejo">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="rfc" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
